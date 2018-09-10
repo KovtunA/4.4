@@ -7,20 +7,30 @@ namespace _4._4
         static void Main(string[] args)
         {
             Console.WriteLine("Enter А ");
-            int a = Convert.ToInt32(Console.ReadLine());
+            int a = getNumber();
             Console.WriteLine("Enter B ");
-            int b = Convert.ToInt32(Console.ReadLine());
+            int b = getNumber();
             Console.WriteLine("Enter C ");
-            int c = Convert.ToInt32(Console.ReadLine());
-            Console.ReadKey();
-
-            Console.WriteLine($"Your result {Max(a, b, c)}");
+            int c = getNumber();
+   
+            Console.WriteLine($"Your result {calculate(a, b, c)}");
         }
 
-        public static int Max(int a, int b, int c)
+        public static int calculate(int a, int b, int c)
         {
             return Math.Max(a * b * c, a + b + c) + 3;
         }
 
+        private static Int32 getNumber()
+        {
+            string userInput = Console.ReadLine();
+
+            try { return Convert.ToInt32(userInput); }
+            catch
+            {
+                Console.WriteLine("Invalid input, please try again");
+                return getNumber();
+            }
+        }
     }
 }
